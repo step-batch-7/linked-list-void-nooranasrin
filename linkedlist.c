@@ -182,7 +182,7 @@ Status clear_list(List_ptr list) {
 List_ptr reverse(List_ptr list) {
   List_ptr reverse = create_list();
   if (list->first == NULL) {
-    return NULL;
+    return reverse;
   }
 
   Node_ptr pWalk = list->first;
