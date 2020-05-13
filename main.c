@@ -19,6 +19,10 @@ int main() {
   status = add_to_list(list, &number4);
   status = insert_at(list, &number2, position);
   display_int_list(list);
+  List_ptr reverse_list = reverse(list);
+  printf("\n");
+  display_int_list(reverse_list);
+
   Element head = remove_from_start(list);
   printf("\n");
   display_int_list(list);
