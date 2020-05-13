@@ -162,3 +162,17 @@ Element remove_at(List_ptr list, int position) {
   list->length--;
   return pWalk;
 }
+
+Status clear_list(List_ptr list) {
+  Node_ptr pWalk = list->first;
+  int status;
+
+  while(pWalk != NULL) {
+    Element element =  remove_from_end(list);
+    if(element != NULL) {
+      status = Success;
+    }
+    pWalk = list->first;
+  }
+  return status;
+}
