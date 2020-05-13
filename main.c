@@ -12,8 +12,11 @@ void display_int_list(List_ptr list) {
 
 int main() {
   List_ptr list = create_list();
-  int number = 10;
-  add_to_start(list, &number);
+  int number1 = 10, number2 = 20, number3 = 30, number4 = 40;
+  int position = 1;
+  add_to_start(list, &number1);
+  add_to_list(list, &number3);
+  insert_at(list, &number2, position);
   display_int_list(list);
   return 0;
 }
