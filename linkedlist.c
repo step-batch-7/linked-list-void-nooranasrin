@@ -134,3 +134,31 @@ Element remove_from_end(List_ptr list) {
   free(pWalk);
   return tail;
 }
+
+Element remove_at(List_ptr list, int position) {
+  if(position > list->length - 1 || position < 0) {
+    return NULL;
+  }
+
+  if(position == 0) {
+    return remove_from_start(list);
+  }
+
+  if (position == list->length - 1) {
+    return remove_from_end(list);
+  }
+
+  Node_ptr pWalk = list->first;
+  Node_ptr previous = pWalk;
+  int index = 0;
+
+  while (index != position) {
+    previous = pWalk;
+    pWalk = pWalk->next;
+    index++;
+  }
+
+  previous->next = pWalk->next;
+  list->length--;
+  return pWalk;
+}

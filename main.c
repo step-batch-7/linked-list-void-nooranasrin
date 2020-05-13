@@ -25,5 +25,10 @@ int main() {
   Element tail = remove_from_end(list);
   printf("\n");
   display_int_list(list);
+
+  Element element = remove_at(list, 0);
+  printf("\n");
+  display_int_list(list);
+
   return 0;
 }
