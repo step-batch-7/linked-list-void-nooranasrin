@@ -97,3 +97,15 @@ Status insert_at(List_ptr list, Element value, int position) {
   list->length++;
   return Success;
 }
+
+Element remove_from_start(List_ptr list) {
+  if(list->length == 0) {
+    return NULL;
+  }
+
+  Node_ptr head = list->first;
+  list->first = list->first->next;
+  list->length--;
+  free(head);
+  return head;
+}

@@ -18,5 +18,8 @@ int main() {
   add_to_list(list, &number3);
   insert_at(list, &number2, position);
   display_int_list(list);
+  Element head = remove_from_start(list);
+  printf("\n");
+  display_int_list(list);
   return 0;
 }
