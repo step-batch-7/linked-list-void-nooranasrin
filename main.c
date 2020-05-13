@@ -7,6 +7,10 @@ Element increment(Element number) {
   return incremented_number;
 }
 
+Status is_even(Element number) {
+  return *(int *)number % 2 == 0 ? Success : Failure;
+}
+
 void display_int_list(List_ptr list) {
   Node_ptr pWalk = list->first;
 
@@ -18,7 +22,7 @@ void display_int_list(List_ptr list) {
 
 int main() {
   List_ptr list = create_list();
-  int number1 = 10, number2 = 20, number3 = 30, number4 = 40;
+  int number1 = 10, number2 = 21, number3 = 31, number4 = 40;
   int position = 1;
   Status status = add_to_start(list, &number1);
   status = add_to_list(list, &number3);
@@ -33,6 +37,10 @@ int main() {
   List_ptr incremented_numbers = map(reverse_list, &increment);
   printf("\nMap\n");
   display_int_list(incremented_numbers);
+
+  List_ptr filtered_numbers = filter(reverse_list, &is_even);
+  printf("\nFilter\n");
+  display_int_list(filtered_numbers);
 
   Element head = remove_from_start(list);
   printf("\n");

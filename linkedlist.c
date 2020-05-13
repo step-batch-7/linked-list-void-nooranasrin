@@ -207,3 +207,16 @@ List_ptr map(List_ptr list, Mapper mapper) {
 
   return mapped_elements;
 }
+
+List_ptr filter(List_ptr list, Predicate predicate) {
+  List_ptr filtered_elements = create_list();
+  Node_ptr pWalk = list->first;
+
+  while(pWalk != NULL) {
+    if(predicate(pWalk->element)) {
+      add_to_list(filtered_elements, pWalk->element);
+    }
+    pWalk = pWalk->next;
+  }
+  return filtered_elements;
+};
