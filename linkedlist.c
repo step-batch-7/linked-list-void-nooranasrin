@@ -26,3 +26,22 @@ Node_ptr create_node(void *value) {
   new_node->next = NULL;
   return new_node;
 }
+
+Status add_to_start(List_ptr list, Element value) {
+  Node_ptr new_node = create_node(value);
+
+  if(new_node == NULL) {
+    return Failure;
+  }
+
+  if(list->first == NULL) {
+    list->first = new_node;
+    list->last = list->first;
+  } else {
+    new_node->next = list->first;
+    list->first = new_node;
+  }
+
+  list->length++;
+  return Success;
+}
