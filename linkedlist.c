@@ -194,3 +194,16 @@ List_ptr reverse(List_ptr list) {
 
   return reverse;
 }
+
+List_ptr map(List_ptr list, Mapper mapper) {
+  List_ptr mapped_elements = create_list();
+  Node_ptr pWalk = list->first;
+
+  while(pWalk != NULL) {
+    Element new_element = mapper(pWalk->element);
+    add_to_list(mapped_elements, new_element);
+    pWalk = pWalk->next;
+  }
+
+  return mapped_elements;
+}

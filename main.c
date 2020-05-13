@@ -1,6 +1,12 @@
 #include<stdio.h>
 #include "linkedlist.h"
 
+Element increment(Element number) {
+  char *incremented_number = malloc(sizeof(char));
+  *incremented_number = *(int *)number + 1;
+  return incremented_number;
+}
+
 void display_int_list(List_ptr list) {
   Node_ptr pWalk = list->first;
 
@@ -19,9 +25,14 @@ int main() {
   status = add_to_list(list, &number4);
   status = insert_at(list, &number2, position);
   display_int_list(list);
+
   List_ptr reverse_list = reverse(list);
-  printf("\n");
+  printf("\nReverse:\n");
   display_int_list(reverse_list);
+
+  List_ptr incremented_numbers = map(reverse_list, &increment);
+  printf("\nMap\n");
+  display_int_list(incremented_numbers);
 
   Element head = remove_from_start(list);
   printf("\n");
@@ -38,6 +49,7 @@ int main() {
   status = clear_list(list);
   printf("\n");
   display_int_list(list);
+
 
   return 0;
 }
