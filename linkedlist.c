@@ -160,7 +160,9 @@ Element remove_at(List_ptr list, int position) {
 
   previous->next = pWalk->next;
   list->length--;
-  return pWalk;
+  Element removed = pWalk;
+  free(pWalk);
+  return removed;
 }
 
 Status clear_list(List_ptr list) {
