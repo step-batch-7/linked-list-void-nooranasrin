@@ -99,11 +99,12 @@ Status insert_at(List_ptr list, Element value, int position) {
 }
 
 Element remove_from_start(List_ptr list) {
+  Node_ptr head = list->first;
+
   if(list->length == 0) {
-    return NULL;
+    return head;
   }
 
-  Node_ptr head = list->first;
   list->first = list->first->next;
   list->length--;
   free(head);
@@ -111,8 +112,10 @@ Element remove_from_start(List_ptr list) {
 }
 
 Element remove_from_end(List_ptr list) {
+  Node_ptr head = list->first;
+
   if(list->length ==0) {
-    return NULL;
+    return head;
   }
 
   if(list->first->next == NULL) {
