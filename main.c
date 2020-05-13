@@ -21,5 +21,9 @@ int main() {
   Element head = remove_from_start(list);
   printf("\n");
   display_int_list(list);
+
+  Element tail = remove_from_end(list);
+  printf("\n");
+  display_int_list(list);
   return 0;
 }

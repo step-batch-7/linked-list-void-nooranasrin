@@ -109,3 +109,28 @@ Element remove_from_start(List_ptr list) {
   free(head);
   return head;
 }
+
+Element remove_from_end(List_ptr list) {
+  if(list->length ==0) {
+    return NULL;
+  }
+
+  if(list->first->next == NULL) {
+    return remove_from_start(list);
+  }
+
+  Node_ptr pWalk = list->first;
+  Node_ptr previous = pWalk;
+
+  while (pWalk->next != NULL) {
+    previous = pWalk;
+    pWalk = pWalk->next;
+  }
+
+  Element tail = previous->next;
+  previous->next = NULL;
+  list->last = previous;
+  list->length--;
+  free(pWalk);
+  return tail;
+}
