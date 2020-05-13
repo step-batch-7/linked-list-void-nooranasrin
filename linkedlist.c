@@ -220,3 +220,14 @@ List_ptr filter(List_ptr list, Predicate predicate) {
   }
   return filtered_elements;
 };
+
+Element reduce(List_ptr list, Element init, Reducer reducer) {
+  Element context = init;
+  Node_ptr pWalk = list->first;
+
+  while(pWalk != NULL) {
+    context = reducer(context, pWalk->element);
+    pWalk = pWalk->next;
+  }
+  return context;
+}

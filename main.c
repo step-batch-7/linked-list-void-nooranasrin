@@ -11,6 +11,12 @@ Status is_even(Element number) {
   return *(int *)number % 2 == 0 ? Success : Failure;
 }
 
+Element add(Element sum, Element number) {
+  int *total = malloc(sizeof(int));
+  *total = *(int *)sum + *(int *)number;
+  return (sum = total);
+}
+
 void display_int_list(List_ptr list) {
   Node_ptr pWalk = list->first;
 
@@ -41,6 +47,10 @@ int main() {
   List_ptr filtered_numbers = filter(reverse_list, &is_even);
   printf("\nFilter\n");
   display_int_list(filtered_numbers);
+
+  int sum = 0;
+  Element total = reduce(reverse_list, &sum, &add);
+  printf("\nReduce : %d\n", *(int *)total);
 
   Element head = remove_from_start(list);
   printf("\n");
