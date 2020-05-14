@@ -148,3 +148,16 @@ void test_for_add_unique() {
   test_existing_element_for_add_unique_element();
   printf("\n");
 }
+
+void test_clear_list() {
+  printf("---------clear_list---------\n");
+  char description[] = "should clear the list\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  Status actual = clear_list(list);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
+  printf("\n");
+}

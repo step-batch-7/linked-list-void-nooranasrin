@@ -25,4 +25,6 @@ void test_add_unique_element();
 void test_existing_element_for_add_unique_element();
 void test_for_add_unique();
 
+void test_clear_list();
+
 #endif
