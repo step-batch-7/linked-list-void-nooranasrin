@@ -27,4 +27,8 @@ void test_for_add_unique();
 
 void test_clear_list();
 
+void test_remove_from_start_in_a_single_list();
+void test_remove_from_long_list_for_remove_from_start();
+void test_for_remove_from_start();
+
 #endif

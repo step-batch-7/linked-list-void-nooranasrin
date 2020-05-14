@@ -8,5 +8,6 @@ int main(void) {
   test_for_insert_at();
   test_for_add_unique();
   test_clear_list();
+  test_for_remove_from_start();
   return 0;
 }

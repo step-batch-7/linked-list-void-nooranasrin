@@ -115,7 +115,7 @@ Element remove_from_start(List_ptr list) {
   Node_ptr head = list->first;
 
   if(list->length == 0) {
-    return head->element;
+    return NULL;
   }
 
   list->first = list->first->next;

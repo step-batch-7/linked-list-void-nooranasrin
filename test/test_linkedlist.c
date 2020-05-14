@@ -6,6 +6,10 @@ Status is_int_equal(Element num1, Element num2) {
   return *(int *)num1 == *(int *)num2;
 }
 
+Status is_NULL(Element element1, Element element2) {
+  return (int *)element1 == NULL && (int *)element2 == NULL;
+}
+
 void test_create_list() {
   printf("--------------create_list-------------\n");
   char description[] = "should create a list with length 0\n";
@@ -159,5 +163,33 @@ void test_clear_list() {
   Status actual = clear_list(list);
   Status expected = Success;
   assert_equal(&expected, &actual, description, &is_int_equal);
+  printf("\n");
+}
+
+void test_remove_from_start_in_a_single_list() {
+  char description[] = "should give the removed element when the list is a single list\n";
+  List_ptr list = create_list();
+  int num = 1;
+  add_to_list(list, &num);
+  Element actual = remove_from_start(list);
+  int expected = 1;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_remove_from_long_list_for_remove_from_start() {
+  char description[] = "should give the removed element when the list is a long list\n";
+  List_ptr list = create_list();
+  int num = 1, num2;
+  add_to_list(list, &num);
+  add_to_list(list, &num2);
+  Element actual = remove_from_start(list);
+  int expected = 1;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_for_remove_from_start() {
+  printf("---------remove_from_start---------\n");
+  test_remove_from_start_in_a_single_list();
+  test_remove_from_long_list_for_remove_from_start();
   printf("\n");
 }
