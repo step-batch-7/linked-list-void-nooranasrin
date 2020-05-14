@@ -214,7 +214,7 @@ List_ptr reverse(List_ptr list) {
 Element remove_first_occurrence(List_ptr list, Element value, Matcher matcher) {
   Node_ptr pWalk = list->first;
   Node_ptr previous = pWalk;
-  Element removed;
+  Element removed = NULL;
 
   if(matcher(list->first->element, value)) {
     return remove_from_start(list);
