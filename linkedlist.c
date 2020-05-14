@@ -234,3 +234,16 @@ Element reduce(List_ptr list, Element init, Reducer reducer) {
   }
   return context;
 }
+
+Status add_unique(List_ptr list, Element value, Matcher is_equal) {
+  Node_ptr pWalk = list->first;
+
+  while (pWalk != NULL) {
+    if(is_equal(pWalk->element, value)) {
+      return Failure;
+    }
+    pWalk = pWalk->next;
+  }
+
+  return add_to_list(list, value);
+}
