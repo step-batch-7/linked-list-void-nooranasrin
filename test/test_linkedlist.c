@@ -68,3 +68,54 @@ void test_add_to_start() {
   test_long_list_for_add_to_start();
   printf("\n");
 }
+
+void test_invalid_position_for_insert_at() {
+  char description[] = "should give Failure when the position is not valid\n";
+  List_ptr list = create_list();
+  int number = 5;
+  Status expected = Failure;
+  Status actual = insert_at(list, &number, 3);
+  assert_equal(&expected, &actual, description, &is_int_equal);
+  actual = insert_at(list, &number, -3);
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_position_0_for_insert_at() {
+  char description[] = "should add the element into the 0th position when the position is 0\n";
+  List_ptr list = create_list();
+  int number = 5;
+  Status expected = Success;
+  Status actual = insert_at(list, &number, 0);
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_add_to_end_for_insert_at() {
+  char description[] = "should add the element into the end of the list when the position is equal to the length of the list\n";
+  List_ptr list = create_list();
+  int number1 = 1, number2 = 3, number3 = 5;
+  Status expected = Success;
+  add_to_start(list , &number1);
+  add_to_start(list, &number2);
+  Status actual = insert_at(list, &number3, 2);
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_add_to_middle() {
+  char description[] = "should add to the list when the position is in between 0 and length of the list\n";
+  List_ptr list = create_list();
+  int number1 = 1, number2 = 3, number3 = 5;
+  Status expected = Success;
+  add_to_start(list , &number1);
+  add_to_start(list, &number2);
+  Status actual = insert_at(list, &number3, 1);
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_for_insert_at() {
+  printf("--------- insert_at---------\n");
+  test_invalid_position_for_insert_at();
+  test_position_0_for_insert_at();
+  test_add_to_end_for_insert_at();
+  test_add_to_middle();
+  printf("\n");
+}
