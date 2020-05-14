@@ -179,7 +179,7 @@ Element remove_at(List_ptr list, int position) {
 
   previous->next = pWalk->next;
   list->length--;
-  Element removed = pWalk;
+  Element removed = pWalk->element;
   free(pWalk);
   return removed;
 }
