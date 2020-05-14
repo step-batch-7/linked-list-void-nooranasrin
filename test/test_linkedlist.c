@@ -41,3 +41,30 @@ void test_add_to_list() {
   test_long_list_for_add_to_list();
   printf("\n");
 }
+
+void test_empty_list_for_add_to_start() {
+  char description[] = "should add to the 0th position of an empty list\n";
+  List_ptr list = create_list();
+  int number = 5;
+  Status actual = add_to_start(list, &number);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_long_list_for_add_to_start() {
+  char description[] = "should add to the start of a long list\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2, num3 = 4;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  Status actual = add_to_start(list, &num3);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_add_to_start() {
+  printf("--------- add_to_start---------\n");
+  test_empty_list_for_add_to_start();
+  test_long_list_for_add_to_start();
+  printf("\n");
+}
