@@ -193,3 +193,44 @@ void test_for_remove_from_start() {
   test_remove_from_long_list_for_remove_from_start();
   printf("\n");
 }
+
+void test_non_existing_element_for_remove_all_occurrences() {
+  char description[] = "should give list with length 0 when the element is not existing in the list\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2, num3 = 5;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  List_ptr actual = remove_all_occurrences(list, &num3, &is_int_equal);
+  int expected = 0;
+  assert_equal(&expected, &actual->length, description, &is_int_equal);
+}
+
+void test_single_occurrance_for_remove_all_occurrences() {
+  char description[] = "should remove the all the occurrence of the element when the list containing that element\n";
+  List_ptr list = create_list();
+  int num1 = 1;
+  add_to_start(list, &num1);
+  List_ptr actual = remove_all_occurrences(list, &num1, &is_int_equal);
+  int expected = 1;
+  assert_equal(&expected, &actual->length, description, &is_int_equal);
+}
+
+void test_multiple_occurrance_for_remove_all_occurrences() {
+  char description[] = "should remove the all the occurrence of the element when the list containing that element\n";
+  List_ptr list = create_list();
+  int num1 = 1;
+  add_to_start(list, &num1);
+  add_to_start(list, &num1);
+  add_to_start(list, &num1);
+  List_ptr actual = remove_all_occurrences(list, &num1, &is_int_equal);
+  int expected = 3;
+  assert_equal(&expected, &actual->length, description, &is_int_equal);
+}
+
+void test_remove_all_occurrences() {
+  printf("--------- remove_all_occurrences---------\n");
+  test_non_existing_element_for_remove_all_occurrences();
+  test_single_occurrance_for_remove_all_occurrences();
+  test_multiple_occurrance_for_remove_all_occurrences();
+  printf("\n");
+}
