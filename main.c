@@ -21,6 +21,10 @@ Element add(Element sum, Element number) {
   return (sum = total);
 }
 
+void print_element(Element element) {
+  printf("%d\n", *(int *)element);
+}
+
 void display_int_list(List_ptr list) {
   Node_ptr pWalk = list->first;
 
@@ -44,15 +48,15 @@ int main() {
   printf("\nReverse:\n");
   display_int_list(reverse_list);
 
-  List_ptr incremented_numbers = map(reverse_list, &increment);
-  printf("\nMap\n");
-  display_int_list(incremented_numbers);
-
   status = add_unique(list, &number5, &is_int_equal);
   printf("\nAdd Unique Existing Element : %d\n", status);
   status = add_unique(list, &number6, &is_int_equal);
   printf("Add Unique Non Existing Element : %d\n", status);
   display_int_list(list);
+
+  List_ptr incremented_numbers = map(reverse_list, &increment);
+  printf("\nMap\n");
+  display_int_list(incremented_numbers);
 
   List_ptr filtered_numbers = filter(reverse_list, &is_even);
   printf("\nFilter\n");
@@ -61,6 +65,9 @@ int main() {
   int sum = 0;
   Element total = reduce(reverse_list, &sum, &add);
   printf("\nReduce : %d\n", *(int *)total);
+
+  printf("\nForEach\n");
+  forEach(reverse_list, &print_element);
 
   Element head = remove_from_start(list);
   printf("\n");
