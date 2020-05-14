@@ -236,6 +236,22 @@ Element remove_first_occurrence(List_ptr list, Element value, Matcher matcher) {
   return removed->element;
 }
 
+List_ptr remove_all_occurrences(List_ptr list, Element value, Matcher matcher) {
+  Node_ptr pWalk = list->first;
+  List_ptr removed_list = create_list();
+
+  while(pWalk != NULL) {
+    if(pWalk->element == value) {
+      Element element =  remove_first_occurrence(list, value, matcher);
+      add_to_list(removed_list, element);
+      pWalk = list->first;
+    } else {
+      pWalk = pWalk->next;
+    }
+  }
+  return removed_list;
+}
+
 List_ptr map(List_ptr list, Mapper mapper) {
   List_ptr mapped_elements = create_list();
   Node_ptr pWalk = list->first;

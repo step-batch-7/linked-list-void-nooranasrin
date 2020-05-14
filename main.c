@@ -72,6 +72,13 @@ int main() {
   Element element = remove_first_occurrence(list, &number1, &is_int_equal);
   printf("\nRemove First Occurrence : %d\n", *(int *)element);
 
+  add_to_list(list, &number1);
+  add_to_list(list, &number1);
+  add_to_list(list, &number1);
+  List_ptr removed_list = remove_all_occurrences(list, &number1, &is_int_equal);
+  printf("\nRemove all occurrences : \n");
+  display_int_list(removed_list);
+
   Element head = remove_from_start(list);
   printf("\nRemove From start : %d\n", *(int *)head);
 
