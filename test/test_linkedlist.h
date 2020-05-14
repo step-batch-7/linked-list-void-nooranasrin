@@ -31,8 +31,8 @@ void test_remove_from_start_in_a_single_list();
 void test_remove_from_long_list_for_remove_from_start();
 void test_for_remove_from_start();
 
-void test_non_existing_element_for_remove_all_occurrences();
-void test_multiple_occurrance_for_remove_all_occurrences();
-void test_remove_all_occurrences();
+void test_remove_from_end_in_a_single_list();
+void test_remove_from_end_int_long_list();
+void test_for_remove_from_end();
 
 #endif
