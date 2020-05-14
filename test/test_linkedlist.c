@@ -2,11 +2,16 @@
 #include<stdlib.h>
 #include "test_linkedlist.h"
 
+Status is_int_equal(Element num1, Element num2) {
+  return *(int *)num1 == *(int *)num2;
+}
+
 void test_create_list() {
   printf("--------------create_list-------------\n");
   char description[] = "should create a list with length 0\n";
   List_ptr list = create_list();
-  assert_int_equal(0, list->length, description);
+  Status expected = Failure;
+  assert_equal(&expected, &list->length, description, &is_int_equal);
   printf("\n");
 }
 
@@ -15,7 +20,8 @@ void test_empty_list_for_add_to_list() {
   List_ptr list = create_list();
   int number = 5;
   Status actual = add_to_list(list, &number);
-  assert_int_equal(1, actual, description);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
 }
 
 void test_long_list_for_add_to_list() {
@@ -25,7 +31,8 @@ void test_long_list_for_add_to_list() {
   add_to_start(list, &num1);
   add_to_start(list, &num2);
   Status actual = add_to_list(list, &num3);
-  assert_int_equal(1, actual, description);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
 }
 
 void test_add_to_list() {

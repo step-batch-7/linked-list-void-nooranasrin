@@ -1,13 +1,12 @@
 #include "test_linkedlist.h"
 
-void assert_int_equal(int expectedValue, int actualValue, char *message) {
+void assert_equal(Element expectedValue, Element actualValue, char *message, Matcher matcher) {
   char symbol[] = "✅";
 
-  if(expectedValue != actualValue ) {
-    char error_symbol[] = "❌";
-    printf("%s %s  * Expected -> %d\n  * Got -> %d\n",error_symbol, message, expectedValue, actualValue);
+  if(matcher(expectedValue, actualValue) ) {
+    printf("%s %s",symbol, message);
     return;
   }
-
-  printf("%s %s",symbol, message);
+  char error_symbol[] = "❌";
+  printf("%s %s\n",error_symbol, message);
 }
