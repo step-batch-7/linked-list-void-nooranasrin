@@ -118,6 +118,10 @@ Element remove_from_start(List_ptr list) {
     return NULL;
   }
 
+  if(list->length == 1) {
+    list->last = NULL;
+  }
+
   list->first = list->first->next;
   list->length--;
   Element removed = head->element;
