@@ -6,5 +6,6 @@ int main(void) {
   test_add_to_list();
   test_add_to_start();
   test_for_insert_at();
+  test_for_add_unique();
   return 0;
 }

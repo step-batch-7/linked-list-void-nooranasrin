@@ -21,4 +21,8 @@ void test_add_to_end_for_insert_at();
 void test_add_to_middle();
 void test_for_insert_at();
 
+void test_add_unique_element();
+void test_existing_element_for_add_unique_element();
+void test_for_add_unique();
+
 #endif

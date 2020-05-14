@@ -119,3 +119,32 @@ void test_for_insert_at() {
   test_add_to_middle();
   printf("\n");
 }
+
+void test_add_unique_element() {
+  char description[] = "should add the element into the end of the list when the element is not existing\n";
+  int num1 = 1, num2 = 2, num3 = 3;
+  List_ptr list = create_list();
+  add_to_start(list , &num1);
+  add_to_start(list, &num2);
+  Status actual = add_unique(list, &num3, &is_int_equal);
+  Status expected = Success;
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_existing_element_for_add_unique_element() {
+  char description[] = "should not add the element into list when the element is existing\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2;
+  add_to_start(list , &num1);
+  add_to_start(list, &num2);
+  Status actual = add_unique(list, &num1, &is_int_equal);
+  Status expected = Failure;
+  assert_equal(&expected, &actual, description, &is_int_equal);
+}
+
+void test_for_add_unique() {
+  printf("---------add_unique---------\n");
+  test_add_unique_element();
+  test_existing_element_for_add_unique_element();
+  printf("\n");
+}
