@@ -167,10 +167,6 @@ Element remove_at(List_ptr list, int position) {
     return remove_from_end(list);
   }
 
-  if(list->length == 1) {
-    list->last = NULL;
-  }
-
   Node_ptr pWalk = list->first;
   Node_ptr previous = pWalk;
   int index = 0;
