@@ -183,9 +183,9 @@ Element remove_at(List_ptr list, int position) {
 
   previous->next = pWalk->next;
   list->length--;
-  Node_ptr removed = pWalk;
+  Element removed = pWalk;
   free(pWalk);
-  return removed->element;
+  return removed;
 }
 
 Status clear_list(List_ptr list) {
