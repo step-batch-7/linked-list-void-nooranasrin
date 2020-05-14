@@ -259,3 +259,33 @@ void test_for_remove_at() {
   test_remove_from_end_for_remove_at();
   printf("\n");
 }
+
+void test_single_occurrence() {
+  char description[] = "should remove the element when the list containing that element only once\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  Element actual = remove_first_occurrence(list, &num1, &is_int_equal);
+  int expected = 1;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_multiple_occurrence() {
+  char description[] = "should remove the first occurrence of the element when the list containing that element more than once\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2, num3 = 1;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  add_to_start(list, &num3);
+  Element actual = remove_first_occurrence(list, &num1, &is_int_equal);
+  int expected = 1;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_for_remove_first_occurrence() {
+  printf("--------- remove_first_occurrence---------\n");
+  test_single_occurrence();
+  test_multiple_occurrence();
+  printf("\n");
+}

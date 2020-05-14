@@ -11,5 +11,6 @@ int main(void) {
   test_for_remove_from_start();
   test_for_remove_from_end();
   test_for_remove_at();
+  test_for_remove_first_occurrence();
   return 0;
 }

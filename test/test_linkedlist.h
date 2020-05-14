@@ -40,4 +40,8 @@ void test_remove_from_middle();
 void test_remove_from_end_for_remove_at();
 void test_for_remove_at();
 
+void test_single_occurrence();
+void test_multiple_occurrence();
+void test_for_remove_first_occurrence();
+
 #endif
