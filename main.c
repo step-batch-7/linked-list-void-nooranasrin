@@ -36,62 +36,16 @@ void display_int_list(List_ptr list) {
 
 int main() {
   List_ptr list = create_list();
-  int number1 = 10, number2 = 21, number3 = 31, number4 = 40, number5 = 40, number6 = 50;
+  int number1 = 10, number2 = 20, number3 = 30, number4 = 40, number5 = 40, number6 = 40;
   int position = 1;
   Status status = add_to_start(list, &number1);
-  status = add_to_list(list, &number3);
-  status = add_to_list(list, &number4);
-  status = insert_at(list, &number2, position);
-  display_int_list(list);
-
-  List_ptr reverse_list = reverse(list);
-  printf("\nReverse:\n");
-  display_int_list(reverse_list);
-
-  status = add_unique(list, &number5, &is_int_equal);
-  printf("\nAdd Unique Existing Element : %d\n", status);
-  status = add_unique(list, &number6, &is_int_equal);
-  printf("Add Unique Non Existing Element : %d\n", status);
-  display_int_list(list);
-
-  List_ptr incremented_numbers = map(reverse_list, &increment);
-  printf("\nMap\n");
-  display_int_list(incremented_numbers);
-
-  List_ptr filtered_numbers = filter(reverse_list, &is_even);
-  printf("\nFilter\n");
-  display_int_list(filtered_numbers);
-
-  int sum = 0;
-  Element total = reduce(reverse_list, &sum, &add);
-  printf("\nReduce : %d\n", *(int *)total);
-
-  printf("\nForEach\n");
-  forEach(reverse_list, &print_element);
-
-  Element element = remove_first_occurrence(list, &number1, &is_int_equal);
-  printf("\nRemove First Occurrence : %d\n", *(int *)element);
-
-  add_to_list(list, &number1);
-  add_to_list(list, &number1);
-  add_to_list(list, &number1);
-  List_ptr removed_list = remove_all_occurrences(list, &number1, &is_int_equal);
-  printf("\nRemove all occurrences : \n");
-  display_int_list(removed_list);
-
-  Element head = remove_from_start(list);
-  printf("\nRemove From start : %d\n", *(int *)head);
-
-  Element tail = remove_from_end(list);
-  printf("\nRemove From end : %d\n", *(int *)tail);
-
-  element = remove_at(list, 0);
-  printf("\nRemove at : %d\n", *(int *)element);
-
-  status = clear_list(list);
-  printf("\n");
-  display_int_list(list);
-
-
+  // status = add_to_list(list, &number2);
+  // status = add_to_list(list, &number3);
+  // status = add_to_list(list, &number4);
+  // status = add_to_list(list, &number5);
+  // status = add_to_list(list, &number6);
+  // display_int_list(list);
+  Element element = remove_from_start(list);
+  printf("\n%d\n", *(int *)element);
   return 0;
 }

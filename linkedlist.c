@@ -121,7 +121,6 @@ Element remove_from_start(List_ptr list) {
   list->first = list->first->next;
   list->length--;
   Element removed = head->element;
-  free(head);
   return removed;
 }
 
