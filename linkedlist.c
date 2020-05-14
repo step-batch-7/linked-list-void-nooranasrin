@@ -146,7 +146,6 @@ Element remove_from_end(List_ptr list) {
   previous->next = NULL;
   list->last = previous;
   list->length--;
-  free(pWalk);
   return tail->element;
 }
 
