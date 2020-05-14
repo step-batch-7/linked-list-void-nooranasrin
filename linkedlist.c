@@ -241,7 +241,7 @@ List_ptr remove_all_occurrences(List_ptr list, Element value, Matcher matcher) {
   List_ptr removed_list = create_list();
 
   while(pWalk != NULL) {
-    if(pWalk->element == value) {
+    if(matcher(pWalk->element, value)) {
       Element element =  remove_first_occurrence(list, value, matcher);
       add_to_list(removed_list, element);
       pWalk = list->first;
