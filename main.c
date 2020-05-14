@@ -39,13 +39,12 @@ int main() {
   int number1 = 10, number2 = 20, number3 = 30, number4 = 40, number5 = 40, number6 = 40;
   int position = 1;
   Status status = add_to_start(list, &number1);
-  // status = add_to_list(list, &number2);
-  // status = add_to_list(list, &number3);
-  // status = add_to_list(list, &number4);
-  // status = add_to_list(list, &number5);
-  // status = add_to_list(list, &number6);
-  // display_int_list(list);
-  Element element = remove_from_start(list);
-  printf("\n%d\n", *(int *)element);
+  status = add_to_list(list, &number2);
+  status = add_to_list(list, &number3);
+  status = add_to_list(list, &number4);
+  status = add_to_list(list, &number5);
+  status = add_to_list(list, &number6);
+  display_int_list(list);
+  Element element = remove_first_occurrence(list, &number1, &is_int_equal);
   return 0;
 }
