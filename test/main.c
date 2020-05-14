@@ -10,5 +10,6 @@ int main(void) {
   test_clear_list();
   test_for_remove_from_start();
   test_for_remove_from_end();
+  test_for_remove_at();
   return 0;
 }

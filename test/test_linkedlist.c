@@ -6,10 +6,6 @@ Status is_int_equal(Element num1, Element num2) {
   return *(int *)num1 == *(int *)num2;
 }
 
-Status is_NULL(Element element1, Element element2) {
-  return (int *)element1 == NULL && (int *)element2 == NULL;
-}
-
 void test_create_list() {
   printf("--------------create_list-------------\n");
   char description[] = "should create a list with length 0\n";
@@ -219,5 +215,47 @@ void test_for_remove_from_end() {
   printf("---------remove_from_end---------\n");
   test_remove_from_end_in_a_single_list();
   test_remove_from_end_int_long_list();
+  printf("\n");
+}
+
+void test_position0_for_remove_at() {
+  char description[] = "should remove from start when the position is 0\n";
+  List_ptr list = create_list();
+  int num = 1;
+  add_to_list(list, &num);
+  Element actual = remove_at(list, 0);
+  int expected = 1;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_remove_from_middle() {
+  char description[] = "should remove from the given position when the position is valid and in between 0 and length of the list\n";
+  List_ptr list = create_list();
+  int num = 1, num2 = 2, num3 = 3;
+  add_to_list(list, &num);
+  add_to_list(list, &num2);
+  add_to_list(list, &num3);
+  Element actual = remove_at(list, 1);
+  int expected = 2;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_remove_from_end_for_remove_at() {
+  char description[] = "should remove from the end when the position is equal to the length of the list\n";
+  List_ptr list = create_list();
+  int num = 1, num2 = 2, num3 = 3;
+  add_to_list(list, &num);
+  add_to_list(list, &num2);
+  add_to_list(list, &num3);
+  Element actual = remove_at(list, 2);
+  int expected = 3;
+  assert_equal(&expected, actual, description, &is_int_equal);
+}
+
+void test_for_remove_at() {
+  printf("---------remove_at---------\n");
+  test_position0_for_remove_at();
+  test_remove_from_middle();
+  test_remove_from_end_for_remove_at();
   printf("\n");
 }

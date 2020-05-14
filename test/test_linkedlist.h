@@ -35,4 +35,9 @@ void test_remove_from_end_in_a_single_list();
 void test_remove_from_end_int_long_list();
 void test_for_remove_from_end();
 
+void test_position0_for_remove_at();
+void test_remove_from_middle();
+void test_remove_from_end_for_remove_at();
+void test_for_remove_at();
+
 #endif
