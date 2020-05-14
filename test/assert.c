@@ -1,6 +1,6 @@
 #include "test_linkedlist.h"
 
-void assert_equal(int expectedValue, int actualValue, char *message) {
+void assert_int_equal(int expectedValue, int actualValue, char *message) {
   char symbol[] = "✅";
 
   if(expectedValue != actualValue ) {
