@@ -216,7 +216,7 @@ Element remove_first_occurrence(List_ptr list, Element value, Matcher matcher) {
   Node_ptr previous = pWalk;
   Element removed;
 
-  if(list->first->element == value) {
+  if(matcher(list->first->element, value)) {
     return remove_from_start(list);
   }
 
