@@ -69,17 +69,17 @@ int main() {
   printf("\nForEach\n");
   forEach(reverse_list, &print_element);
 
+  Element element = remove_first_occurrence(list, &number1, &is_int_equal);
+  printf("\nRemove First Occurrence : %d\n", *(int *)element);
+
   Element head = remove_from_start(list);
-  printf("\n");
-  display_int_list(list);
+  printf("\nRemove From start : %d\n", *(int *)head);
 
   Element tail = remove_from_end(list);
-  printf("\n");
-  display_int_list(list);
+  printf("\nRemove From end : %d\n", *(int *)tail);
 
-  Element element = remove_at(list, 0);
-  printf("\n");
-  display_int_list(list);
+  element = remove_at(list, 0);
+  printf("\nRemove at : %d\n", *(int *)element);
 
   status = clear_list(list);
   printf("\n");

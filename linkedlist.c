@@ -115,20 +115,20 @@ Element remove_from_start(List_ptr list) {
   Node_ptr head = list->first;
 
   if(list->length == 0) {
-    return head;
+    return head->element;
   }
 
   list->first = list->first->next;
   list->length--;
   free(head);
-  return head;
+  return head->element;
 }
 
 Element remove_from_end(List_ptr list) {
   Node_ptr head = list->first;
 
   if(list->length ==0) {
-    return head;
+    return head->element;
   }
 
   if(list->first->next == NULL) {
@@ -143,12 +143,12 @@ Element remove_from_end(List_ptr list) {
     pWalk = pWalk->next;
   }
 
-  Element tail = previous->next;
+  Node_ptr tail = previous->next;
   previous->next = NULL;
   list->last = previous;
   list->length--;
   free(pWalk);
-  return tail;
+  return tail->element;
 }
 
 Element remove_at(List_ptr list, int position) {
@@ -176,9 +176,9 @@ Element remove_at(List_ptr list, int position) {
 
   previous->next = pWalk->next;
   list->length--;
-  Element removed = pWalk;
+  Node_ptr removed = pWalk;
   free(pWalk);
-  return removed;
+  return removed->element;
 }
 
 Status clear_list(List_ptr list) {
@@ -209,6 +209,31 @@ List_ptr reverse(List_ptr list) {
   }
 
   return reverse;
+}
+
+Element remove_first_occurrence(List_ptr list, Element value, Matcher matcher) {
+  Node_ptr pWalk = list->first;
+  Node_ptr previous = pWalk;
+  Node_ptr removed;
+
+  if(list->first->element == value) {
+    return remove_from_start(list);
+  }
+
+  while (pWalk != NULL)
+  {
+    previous = pWalk;
+    pWalk = pWalk->next;
+    if(pWalk != NULL && matcher(pWalk->element, value)) {
+      previous->next = pWalk->next;
+      list->length--;
+      removed = pWalk;
+      free(pWalk);
+      return removed->element;
+    }
+  }
+
+  return removed->element;
 }
 
 List_ptr map(List_ptr list, Mapper mapper) {
