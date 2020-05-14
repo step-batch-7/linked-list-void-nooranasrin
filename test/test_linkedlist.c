@@ -167,7 +167,7 @@ void test_clear_list() {
 }
 
 void test_remove_from_start_in_a_single_list() {
-  char description[] = "should give the removed element when the list is a single list\n";
+  char description[] = "should remove from start in a single list\n";
   List_ptr list = create_list();
   int num = 1;
   add_to_list(list, &num);
@@ -177,7 +177,7 @@ void test_remove_from_start_in_a_single_list() {
 }
 
 void test_remove_from_long_list_for_remove_from_start() {
-  char description[] = "should give the removed element when the list is a long list\n";
+  char description[] = "should remove from start in a long list\n";
   List_ptr list = create_list();
   int num = 1, num2;
   add_to_list(list, &num);
