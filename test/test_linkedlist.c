@@ -6,6 +6,25 @@ Status is_int_equal(Element num1, Element num2) {
   return *(int *)num1 == *(int *)num2;
 }
 
+Status are_int_arrays_equal(List_ptr expectedValue, List_ptr actualValue) {
+  if(expectedValue->length != actualValue->length) {
+    return Failure;
+  }
+
+  Node_ptr expected = expectedValue->first;
+  Node_ptr actual = expectedValue->first;
+
+  while(expected != NULL) {
+    if(expected->element != actual->element) {
+      return Failure;
+    }
+    expected = expected->next;
+    actual = actual->next;
+  }
+
+  return Success;
+};
+
 void test_create_list() {
   printf("--------------create_list-------------\n");
   char description[] = "should create a list with length 0\n";
