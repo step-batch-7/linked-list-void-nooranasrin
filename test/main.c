@@ -14,6 +14,7 @@ int main(void) {
   test_for_remove_first_occurrence();
   test_reverse();
   test_map();
+  test_filter();
 
   return 0;
 }

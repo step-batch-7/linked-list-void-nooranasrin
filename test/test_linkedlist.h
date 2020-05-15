@@ -53,4 +53,8 @@ void test_empty_array_for_map();
 void test_non_empty_array_for_map();
 void test_map();
 
+void test_non_empty_array_for_filter();
+void test_empty_array_for_filter();
+void test_filter();
+
 #endif

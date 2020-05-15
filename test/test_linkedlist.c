@@ -33,6 +33,10 @@ Element increment(Element num) {
   return number;
 }
 
+Status is_even(Element number) {
+  return *(int *)number % 2 == 0 ? Success : Failure;
+}
+
 void test_create_list() {
   printf("--------------create_list-------------\n");
   char description[] = "should create a list with length 0\n";
@@ -370,5 +374,32 @@ void test_map() {
   printf("---------------map-------------\n");
   test_empty_array_for_map();
   test_non_empty_array_for_map();
+  printf("\n");
+}
+
+void test_empty_array_for_filter() {
+  List_ptr numbers = create_list();
+  char description[] = "Should give the an empty list when the array is empty\n";
+  List_ptr actual = filter(numbers, &is_even);
+  List_ptr expected = create_list();
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_non_empty_array_for_filter() {
+  List_ptr numbers = create_list();
+  int num1 = 1, num2 = 2;
+  add_to_start(numbers, &num1);
+  add_to_list(numbers, &num2);
+  char description[] = "Should give the even numbers from the list\n";
+  List_ptr actual = filter(numbers, &is_even);
+  List_ptr expected = create_list();
+  add_to_start(expected, &num2);
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_filter() {
+  printf("---------------filter-------------\n");
+  test_empty_array_for_filter();
+  test_non_empty_array_for_filter();
   printf("\n");
 }
