@@ -14,7 +14,7 @@ void assert_equal(Element expectedValue, Element actualValue, char *message, Mat
 void assert_array_equal(List_ptr *expectedValue, List_ptr *actualValue, char *message, Matcher matcher) {
   char symbol[] = "✅";
 
-  if(are_arrays_equal(expectedValue, actualValue) ) {
+  if(matcher(expectedValue, actualValue) ) {
     printf("%s %s",symbol, message);
     return;
   }
