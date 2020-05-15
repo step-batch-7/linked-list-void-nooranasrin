@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <ctype.h>
 #include "test_linkedlist.h"
 
 Status is_int_equal(Element num1, Element num2) {
@@ -12,10 +13,11 @@ Status are_int_arrays_equal(List_ptr expectedValue, List_ptr actualValue) {
     return Failure;
   }
   Node_ptr expected = expectedValue->first;
-  Node_ptr actual = expectedValue->first;
+  Node_ptr actual = actualValue->first;
 
   while(expected != NULL) {
-    if(expected->element != actual->element) {
+    if (*(int *)expected->element != *(int *)actual->element)
+    {
       return Failure;
     }
     expected = expected->next;
@@ -24,6 +26,12 @@ Status are_int_arrays_equal(List_ptr expectedValue, List_ptr actualValue) {
 
   return Success;
 };
+
+Element increment(Element num) {
+  int *number = malloc(sizeof(int));
+  *number = *(int *)num + 1;
+  return number;
+}
 
 void test_create_list() {
   printf("--------------create_list-------------\n");
@@ -334,5 +342,33 @@ void test_reverse() {
   printf("--------- reverse---------\n");
   test_empty_list_for_reverse();
   test_long_list_for_reverse();
+  printf("\n");
+}
+
+void test_empty_array_for_map() {
+  List_ptr numbers = create_list();
+  char description[] = "Should give the an empty list when the array is empty\n";
+  List_ptr actual = map(numbers, &increment);
+  List_ptr expected = create_list();
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_non_empty_array_for_map() {
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2, num3 = 2, num4 = 3;
+  add_to_start(list, &num1);
+  add_to_list(list, &num2);
+  char description[] = "Should give the lower case list back\n";
+  List_ptr actual = map(list, &increment);
+  List_ptr expected = create_list();
+  add_to_start(expected, &num3);
+  add_to_list(expected, &num4);
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_map() {
+  printf("---------------map-------------\n");
+  test_empty_array_for_map();
+  test_non_empty_array_for_map();
   printf("\n");
 }

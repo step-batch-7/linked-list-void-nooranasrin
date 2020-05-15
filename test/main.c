@@ -13,6 +13,7 @@ int main(void) {
   test_for_remove_at();
   test_for_remove_first_occurrence();
   test_reverse();
+  test_map();
 
   return 0;
 }

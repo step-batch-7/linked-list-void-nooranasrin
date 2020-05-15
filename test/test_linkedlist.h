@@ -49,4 +49,8 @@ void test_empty_list_for_reverse();
 void test_long_list_for_reverse();
 void test_reverse();
 
+void test_empty_array_for_map();
+void test_non_empty_array_for_map();
+void test_map();
+
 #endif
