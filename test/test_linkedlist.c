@@ -7,10 +7,10 @@ Status is_int_equal(Element num1, Element num2) {
 }
 
 Status are_int_arrays_equal(List_ptr expectedValue, List_ptr actualValue) {
-  if(expectedValue->length != actualValue->length) {
+  if (expectedValue->length != actualValue->length)
+  {
     return Failure;
   }
-
   Node_ptr expected = expectedValue->first;
   Node_ptr actual = expectedValue->first;
 
@@ -306,5 +306,33 @@ void test_for_remove_first_occurrence() {
   printf("--------- remove_first_occurrence---------\n");
   test_single_occurrence();
   test_multiple_occurrence();
+  printf("\n");
+}
+
+void test_empty_list_for_reverse() {
+  char description[] = "should give a list with length 0 when the given list is empty\n";
+  List_ptr list = create_list();
+  List_ptr actual = reverse(list);
+  List_ptr expected = create_list();
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_long_list_for_reverse() {
+  char description[] = "should reverse the given long list\n";
+  List_ptr list = create_list();
+  int num1 = 1, num2 = 2;
+  add_to_start(list, &num1);
+  add_to_start(list, &num2);
+  List_ptr actual = reverse(list);
+  List_ptr expected = create_list();
+  add_to_start(expected, &num2);
+  add_to_start(expected, &num1);
+  assert_array_equal(expected, actual, description, &are_int_arrays_equal);
+}
+
+void test_reverse() {
+  printf("--------- reverse---------\n");
+  test_empty_list_for_reverse();
+  test_long_list_for_reverse();
   printf("\n");
 }

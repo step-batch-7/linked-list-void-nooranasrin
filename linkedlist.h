@@ -40,6 +40,7 @@ typedef Status (*Predicate)(Element);
 typedef Element (*Reducer)(Element, Element);
 typedef void (*ElementProcessor)(Element);
 typedef Status (*Matcher)(Element, Element);
+typedef Status (*ArrayMatcher)(List_ptr, List_ptr);
 
 List_ptr create_list(void);
 

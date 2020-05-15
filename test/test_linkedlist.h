@@ -4,6 +4,7 @@
 #define __NUMBERS_H_
 
 void assert_equal(Element expectedValue, Element actualValue, char *message, Matcher matcher);
+void assert_array_equal();
 
 void test_create_list();
 
@@ -43,5 +44,9 @@ void test_for_remove_at();
 void test_single_occurrence();
 void test_multiple_occurrence();
 void test_for_remove_first_occurrence();
+
+void test_empty_list_for_reverse();
+void test_long_list_for_reverse();
+void test_reverse();
 
 #endif

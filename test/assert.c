@@ -11,7 +11,7 @@ void assert_equal(Element expectedValue, Element actualValue, char *message, Mat
   printf("%s %s\n",error_symbol, message);
 }
 
-void assert_array_equal(List_ptr *expectedValue, List_ptr *actualValue, char *message, Matcher matcher) {
+void assert_array_equal(List_ptr expectedValue, List_ptr actualValue, char *message, ArrayMatcher matcher) {
   char symbol[] = "✅";
 
   if(matcher(expectedValue, actualValue) ) {
